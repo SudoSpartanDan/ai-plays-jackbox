@@ -2123,14 +2123,14 @@ telegram = ["requests"]
 
 [[package]]
 name = "types-psutil"
-version = "7.0.0.20250822"
+version = "7.0.0.20251001"
 description = "Typing stubs for psutil"
 optional = false
 python-versions = ">=3.9"
 groups = ["dev"]
 files = [
-    {file = "types_psutil-7.0.0.20250822-py3-none-any.whl", hash = "sha256:81c82f01aba5a4510b9d8b28154f577b780be75a08954aed074aa064666edc09"},
-    {file = "types_psutil-7.0.0.20250822.tar.gz", hash = "sha256:226cbc0c0ea9cc0a50b8abcc1d91a26c876dcb40be238131f697883690419698"},
+    {file = "types_psutil-7.0.0.20251001-py3-none-any.whl", hash = "sha256:adc31de8386d31c61bd4123112fd51e2c700c7502a001cad72a3d56ba6b463d1"},
+    {file = "types_psutil-7.0.0.20251001.tar.gz", hash = "sha256:60d696200ddae28677e7d88cdebd6e960294e85adefbaafe0f6e5d0e7b4c1963"},
 ]
 
 [[package]]
@@ -2631,4 +2631,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "1fc96d677c0f60f11c915c585dd2d0e52c041b73bafb10903f6d29d8cafc9f43"
+content-hash = "03af3d374304e5982d1bb7a5cd23c0018d0831e3911fc340ca20b4c5a25f39ef"
