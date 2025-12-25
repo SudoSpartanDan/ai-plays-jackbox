@@ -77,10 +77,32 @@ def _start(
 
 def _is_game_process_alive():
     game_pid = app.storage.general.get("game_pid", None)
-    is_game_alive = game_pid is not None and psutil.pid_exists(game_pid) and psutil.Process(game_pid).is_running()
-    if not is_game_alive:
+    if game_pid is None:
+        return False
+    try:
+        game_process = psutil.Process(game_pid)
+    except psutil.NoSuchProcess:
+        logger.info(f"Game process {game_pid} does not exist anymore")
         app.storage.general["game_pid"] = None
-    return is_game_alive
+        return False
+    try:
+        status = game_process.status()
+    except (psutil.NoSuchProcess, psutil.ZombieProcess, psutil.Error):
+        logger.info(f"Game process {game_pid} is not alive anymore")
+        app.storage.general["game_pid"] = None
+        return False
+
+    if status in {psutil.STATUS_ZOMBIE, psutil.STATUS_DEAD}:
+        logger.info(f"Game process {game_pid} is not alive anymore")
+        app.storage.general["game_pid"] = None
+        return False
+
+    if not game_process.is_running():
+        logger.info(f"Game process {game_pid} is not alive anymore")
+        app.storage.general["game_pid"] = None
+        return False
+    else:
+        return True
 
 
 def _handle_start_click(
@@ -142,6 +164,7 @@ def _setup_bot_variant_display():
                         ui.item_label(variant.value.personality).props("caption")
 
 
+@ui.page("/")
 def startup():
     ui.page_title("AI Plays JackBox")
     ui.label("🤖 AI Plays JackBox").classes("text-2xl font-bold")
