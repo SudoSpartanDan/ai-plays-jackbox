@@ -10,7 +10,7 @@ license = { text = "MIT" }
 keywords = [ ]
 requires-python = ">=3.11,<4.0"
 dependencies = [
-    "google-genai (>=1.19.0,<2.0.0)",
+    "google-genai (>=1.75.0,<2.0.0)",
     "html2text (>=2025.4.15, <2026.0.0)",
     "loguru (>=0.7.3,<1.0.0)",
     "nicegui (>=3.4.1,<4.0.0)",
